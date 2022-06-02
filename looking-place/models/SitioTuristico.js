@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
     Schema = mongoose.Schema;
 
-const SitioTuristicoSchema = new Schema({
+const sitioTuristicoSchema = new Schema({
     nombre: {
         type: String,
         required: true
@@ -34,4 +34,4 @@ const SitioTuristicoSchema = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('SitioTuristico', SitioTuristicoSchema);
+module.exports = mongoose.model('SitioTuristico', sitioTuristicoSchema);
