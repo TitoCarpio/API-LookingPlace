@@ -4,19 +4,21 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+require('./configuracion/baseDeDatos');
 var indexRouter = require('./rutas/index');
 var usersRouter = require('./rutas/usuarios');
 const sitiosRouter = require('./rutas/sitiosTuristico');
 const resenasRouter = require('./rutas/reseña');
 const recomendacionesRouter = require('./rutas/recomendacion');
 const favoritosRouter = require('./rutas/favorito');
-const database = require('./configuracion/baseDeDatos');
+
 
 require('dotenv').config()
 
 var app = express();
 
-database.connect();
+//database.connect();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
