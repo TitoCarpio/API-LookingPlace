@@ -1,12 +1,13 @@
-const SitioTuristico = require('../models/SitioTuristico');
+// Variable para llamar el modelo que se va a implementar para los sitios turisticos.
+const SitioTuristico = require('../modelo/modeloSitioT');
 
-// Obtener todos los sitios turisticos
+// Obtener todos los sitios turisticos.
 module.exports.obtenerSitiosTuristicos = (req, res) => {
     SitioTuristico.find({})
     .then((sitiosT) => res.status(200).json({sitiosT}))
     .catch((err) => res.status(500).json({err}));
 }
-//Obtener un sitio turistico
+// Para obtener un solo lugar sitios turisticos.
 module.exports.obtenerSitioTuristico = (req, res)=>{
     const {idSitioT} = req.params;
     SitioTuristico.findById(idSitioT)
@@ -14,7 +15,8 @@ module.exports.obtenerSitioTuristico = (req, res)=>{
     .catch((err) => res.status(500).json({err, mensaje: 'Error al obtener el sitio turistico'}));
 
 }
-//Crear un sitio turistico
+
+// Para poder crear un sitio turistico.
 module.exports.crearSitioTuristico = async function (req, res) {
 
     try {
@@ -25,7 +27,8 @@ module.exports.crearSitioTuristico = async function (req, res) {
        res.status(500).json({error});
     }
 }
-//Actualizar un sitio turistico
+
+// Para poder actualizar un sitio turistico.
 module.exports.actualizarSitioTuristico = (req, res) => {
     const {idSitioT} = req.params;
     const sitioT = req.body;
@@ -33,7 +36,8 @@ module.exports.actualizarSitioTuristico = (req, res) => {
     .then((sitioT) => res.status(200).json({sitioT, mensaje: 'Sitio turistico actualizado con exito'}))
     .catch((err) => res.status(500).json({err, mensaje: 'Error al actualizar el sitio turistico'}));
 }
-// Eliminar un sitio turistico
+
+// Para poder eliminar un sitio turistico.
 module.exports.eliminarSitioTuristico = (req, res) => {
     const {idSitioT} = req.params;
     SitioTuristico.findByIdAndDelete(idSitioT)
@@ -41,7 +45,7 @@ module.exports.eliminarSitioTuristico = (req, res) => {
     .catch((err) => res.status(500).json({err, mensaje: 'Error al eliminar el sitio turistico'}));
 }
 
-// Obtener sitios turisticos por nombre
+// Para poder obtener un sitio turistico con base a su nombre.
 module.exports.obtenerSitiosTuristicosPorNombre = (req, res) => {
     const {nombre} = req.params;
     SitioTuristico.find({nombre: {$regex: nombre, $options: 'i'}})
@@ -49,7 +53,7 @@ module.exports.obtenerSitiosTuristicosPorNombre = (req, res) => {
     .catch((err) => res.status(500).json({err, mensaje: 'Error al obtener el sitio turistico'}));
 }
 
-// obtener sitios turisticos por etiqueta
+// Para poder obtener sitios turistico con base a su etiqueta.
 module.exports.obtenerSitioPorEtiqueta = (req,res) => {
     const {etiqueta} = req.params;
     console.log(etiqueta);

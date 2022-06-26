@@ -1,4 +1,4 @@
-const Recomendacion = require('../models/Recomendaciones');
+const Recomendacion = require('../modelo/modeloRecomendacion');
 
 //Crear una recomendacion
 module.exports.crearRecomendacion = async function (req, res) {
@@ -11,7 +11,6 @@ module.exports.crearRecomendacion = async function (req, res) {
         res.status(500).json({error});
     }
 }
-
 
 // Eliminar una recomendacion
 module.exports.eliminarRecomendacion = (req, res) => {
@@ -40,4 +39,3 @@ module.exports.obtenerRecomendaciones = (req, res) => {
     .then((recomendaciones) => res.status(200).json({recomendaciones}))
     .catch((err) => res.status(500).json({err, mensaje: 'Error al obtener las recomendaciones'}));
 }
-// 

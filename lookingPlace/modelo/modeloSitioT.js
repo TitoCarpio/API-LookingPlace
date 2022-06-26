@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
     Schema = mongoose.Schema;
 
 const sitioTuristicoSchema = new Schema({
+    //restricciones que va a llevar sitio turistico.
     nombre: {
         type: String,
         required: true
